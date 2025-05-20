@@ -1,0 +1,52 @@
+mport java.util.Objects;
+
+public class Aluno extends Pessoa {
+    private String matricula;
+    private String curso;
+    private double mediaNotas;
+
+    public Aluno(String nome, int idade, String cpf, String matricula, String curso) {
+        super(nome, idade, cpf);
+        this.matricula = matricula;
+        this.curso = curso;
+        this.mediaNotas = 0.0;
+    }
+
+    public String getMatricula() { return matricula; }
+    public void setMatricula(String matricula) { this.matricula = matricula; }
+
+    public String getCurso() { return curso; }
+    public void setCurso(String curso) { this.curso = curso; }
+
+    public double getMediaNotas() { return mediaNotas; }
+    public void setMediaNotas(double mediaNotas) { this.mediaNotas = mediaNotas; }
+
+    public void calcularSituacao() {
+        if (mediaNotas >= 7.0) {
+            System.out.println("Condição: Aprovado");
+        } else {
+            System.out.println("Condição: Reprovado");
+        }
+    }
+
+    public void exibirDados() {
+        System.out.println(this);
+        System.out.println("Matricula: " + matricula);
+        System.out.println("Curso: " + curso);
+        System.out.println("Média de Notas: " + mediaNotas);
+    }
+
+    public String toString() {
+        return super.toString() + ", Matrícula: " + matricula + ", Curso: " + curso;
+    }
+
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) return false;
+        Aluno aluno = (Aluno) obj;
+        return Objects.equals(matricula, aluno.matricula);
+    }
+
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), matricula);
+    }
+}
